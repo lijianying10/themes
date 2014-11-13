@@ -1,3 +1,5 @@
+{% set assetsPath = "http://gitbookio.github.io/templates/gray" %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,54 +9,45 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<title>E-book</title>
-	
-	<!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-	
-	<!-- custom style css -->
-    <link href="custom.css" rel="stylesheet">
-	
-	<!-- custom responsive css -->
+	{{ mcBook.metatags(book) }}
+
+    <link href="{{ assetsPath }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ assetsPath }}/css/theme.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
-	
+
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	
 	</head>
 	<body>
 		<section class="bannerSection">
 			<div class="opacity paddingTopBottom">
 				<div class="container">
 					<div class="row">
-					
 						<div class="col-lg-7 col-md-7">
 							<header class="welcomeMessage">
-								<h1>Sass in the Real World: book 1 of 4</h1>
-								<h2><a href="#">Dale Sande</a> and <a href="#">Kianosh Pourian</a></h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adip iscing elit. Mauris hendrerit eros ac fermentum Fusce sodales enim at efficitur sagittis consectetur adip iscing elit. Lorem ipsum dolor sit amet, consectetur adip iscing elit. Mauris hendrerit eros ac fermentum Fusce sodales enim at efficitur sagittis consectetur adip iscing elit.</p>
+								<h1>{{ book.title }}</h1>
+								<h2>
+									<a href="{{ book.author.urls.profile }}">{{ book.author.name }}</a>
+	                                {% for user in book.collaborators %}
+	                                {% if loop.last %}and{% else %},{% endif %} <a href="{{ user.urls.profile }}">{{ user.name }}</a>
+	                                {% endfor %}
+								</h2>
+								<p>{{ book.description }}</p>
 							</header>
 						</div>
-						
+
 						<div class="col-lg-5 col-md-5 text-center">
-						
-							<img class="img-responsive book-cover" alt="ebook" src="img/sassintherealworld_book-i.jpg">
-							
+							<img class="img-responsive book-cover" alt="ebook" src="{{ book.cover.large }}">
 						</div>
-						
 					</div>
 				</div>
 			</div>
 		</section>
-		
+
 		<section class="subscribeSection paddingTopBottom">
 			<div class="container">
 				<div class="row">
@@ -71,8 +64,8 @@
 					<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
 						<div class="subscribeEmail">
 							<h3>Subscribe to this book updates:</h3>
-							<form action="#">
-								<input type="email" placeholder="enter your email"/>
+							<form action="{{ book.urls.subscribe }}">
+								<input type="email" name="email" placeholder="enter your email"/>
 								<button>subscribe</button>
 							</form>
 						</div>
@@ -80,42 +73,42 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<section class="paddingTopBottom">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="advertisement text-center">
-							
+
 							<h1>By buying this book, You get unlimited access to the online version</h1>
 							<p>You can also download this book as: <a href="#">ePUB (for iPad, iPhone, Mac)</a>, <a href="#">MOBI (for Kindle)</a> or <a href="#">PDF (for Windows and others)</a></p>
 							<button class="btn">Buy Now for $ <i class="fa fa-shopping-cart"></i></button>
 							<a href="#testimonial"><button class="btn">Review  <i class="fa fa-arrow-right"></i></button></a>
 						</div>
-						
+
 					</div><!--End col-->
 				</div><!--End row-->
-				
+
 			</div><!--End container-->
 		</section><!--End advertise section-->
-		
-	
-		
-		
+
+
+
+
 		<section class="testimonial paddingTopBottom" id="testimonial">
-	
+
 		<div class="container">
-		
+
 			<div class="row">
-			
+
 				<div class="col-lg-12">
-				
+
 					<div class="heading text-center">
 						<h1>Whats the clients say about us</h1>
 					</div>
-				
+
 					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-					 
+
 					 <!-- Indicators -->
 					  <ol class="carousel-indicators">
 						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -125,56 +118,56 @@
 
 					  <!-- Wrapper for slides -->
 					  <div class="carousel-inner" role="listbox">
-						
+
 						<div class="item active">
 							<div class="testimonialsImg">
 								<img src="img/Nicky-Pellegrino-Author1.jpg" alt="Client Image" />
 							</div>
 							<div class="testimonials">
 								<p> <sup><i class="fa fa-quote-left"></i></sup> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen. <sup><i class="fa fa-quote-right"></i></sup></p>
-						  
+
 							</div>
-						 
+
 						</div>
-						
+
 						<div class="item">
-						
+
 							<div class="testimonialsImg">
 								<img src="img/Nicky-Pellegrino-Author1.jpg" alt="Client Image" />
 							</div>
-							
+
 							<div class="testimonials">
-								
+
 								<p><sup><i class="fa fa-quote-left"></i></sup> Lorem Ipsum is simply dummy text of the printing and typesetting industry. ndustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <sup><i class="fa fa-quote-right"></i></sup></p>
 							</div>
-						  
+
 						</div>
-						
+
 						<div class="item">
-						
+
 							<div class="testimonialsImg">
 								<img src="img/Nicky-Pellegrino-Author1.jpg" alt="Client Image" />
 							</div>
-							
+
 							<div class="testimonials">
 
 								<p><sup><i class="fa fa-quote-left"></i></sup> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type. <sup><i class="fa fa-quote-right"></i></sup></p>
 						  </div>
-						  
+
 						</div>
-						
+
 					  </div>
-					 
+
 					</div> <!-- End carosuel div -->
 				</div>
-			
+
 			</div> <!-- End testimonial row -->
 
 		</div> <!-- End testimonials container -->
-	
+
 	</section> <!-- End testimonial section -->
-	
-	
+
+
 	<!-- Table of content area started -->
 	<section class="tableOfContent paddingTopBottom">
 		<div class="container">
@@ -185,12 +178,12 @@
 			<div class="row Assumptions-details">
 				<div class="col-lg-12">
 					<p>This is the part that most book will label as <strong>"Who is this book for?"</strong> but since we are very strict in our grammar and refuse to end a sentence in a preposition, we have called it "Assumptions", but the sentiment is the same. These are some of the assumptions that we are making but since we are very strict in our grammar and refuse to end a sentence in a preposition, we have called it "Assumptions", but the sentiment is the same. These are some of the assumptions that we are making:</p>
-						
+
 					<p>So let's start learning about Sass CSS and develop CSS with its' rightful accompanying tool. but since we are very strict in our grammar and refuse to end a sentence in a preposition, we have called it "Assumptions", but the sentiment is the same.</p>
-					
+
 				</div>
 			</div>
-			
+
 			<div class="summery">
 				<div class="row">
 					<div class="col-lg-4">
@@ -237,7 +230,7 @@
 							</li>
 						</ul>
 					</div>
-					
+
 					<div class="col-lg-4">
 						<ul>
 							<li>
@@ -282,7 +275,7 @@
 							</li>
 						</ul>
 					</div>
-					
+
 					<div class="col-lg-4">
 						<ul>
 							<li>
@@ -373,9 +366,9 @@
 							</li>
 						</ul>
 					</div>
-					
+
 					<div class="col-lg-4">
-						<ul>	
+						<ul>
 							<li>
 								<span class="level">0.</span>
 								Introduction
@@ -418,7 +411,7 @@
 							</li>
 						</ul>
 					</div>
-					
+
 					<div class="col-lg-4">
 						<ul>
 							<li>
@@ -465,20 +458,20 @@
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
 	</section>
-	
-	
+
+
 	<section id="author" class="paddingTopBottom">
-	
+
 		<div class="container">
 			<div class="row">
-			
+
 				<div class="heading text-center">
 					<h1>Author Details</h1>
 				</div>
-			
+
 				<div class="col-lg-3 col-md-3 col-sm-4 col-xs-5">
 					<img src="img/Nicky-Pellegrino-Author1.jpg" alt="Author Image" />
 					<div class="social_icons">
@@ -488,29 +481,29 @@
 						<a href="#"> <i class="fa fa-google-plus-square fa-3x"></i></a>
 					</div>
 				</div>
-				
-				
+
+
 				<div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-				
+
 					<h2>Author Name</h2>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-				
+
 				</div>
 			</div>
 		</div>
-	
+
 	</section> <!-- End author section -->
-	
-		
-		
-		<script src="js/jquery-2.js"></script> 
+
+
+
+		<script src="js/jquery-2.js"></script>
 		<script type="text/javascript" src="js/scripts.js"></script>
 		<script src="js/main_002.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		
-		
+
+
 <div id="fb-root"></div>
 <div id="fb-root"></div>
  <script>
@@ -530,11 +523,11 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
-		
+
 		<script type="text/javascript">
 			window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
 		</script>
-		
+
 
 	</body>
 </html>
