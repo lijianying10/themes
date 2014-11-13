@@ -24,7 +24,8 @@ module.exports = function (grunt) {
                     optimization: 2
                 },
                 files: {
-                    "themes/default/style.css": "src/less/default.less"
+                    "themes/default/style.css": "src/less/default.less",
+                    "themes/blueintro/style.css": "src/less/blueintro.less"
                 }
             }
         },

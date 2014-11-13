@@ -1,0 +1,66 @@
+{% import "../macros/book.html" as mcBook %}
+{% set assetsPath = "http://themes.gitbook.com/blueintro" %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        {{ mcBook.metatags(book) }}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="icon" href="https://www.gitbook.io/assets/images/logo/favicon.ico">
+        <link rel="stylesheet" href="{{ assetsPath }}/default/style.css">
+        <link href='//cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.css' rel='stylesheet' type='text/css'>
+        <style type="text/css">
+            {% block css %}
+            /* Custom CSS */
+            {% endblock %}
+        </style>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+    {% block body %}
+        <!-- Header with title -->
+        <header>
+            <div class="container">
+                <h1>{{ book.title }}</h1>
+            </div>
+        </header>
+
+        <!-- Language List -->
+        {% if book.languages.length > 0 %}
+        <div class="languages">
+            <div class="container">
+                <ol class="breadcrumb">
+                {% for language in book.languages %}
+                    {% if query.language == language %}
+                    <li class="active">{{ language }}</li>
+                    {% else %}
+                    <li><a href="?lang={{ language }}">{{ language }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                </ol>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Cover -->
+                    <div class="cover">
+                        <img src="{{ book.cover.large }}" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!-- Intro -->
+                    <div class="readme">
+                    {{ mcBook.readme(book) }}
+                    </div>
+
+                    <hr class="small">
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    </body>
+</html>
