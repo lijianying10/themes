@@ -24,7 +24,7 @@ module.exports = function (grunt) {
                     optimization: 2
                 },
                 files: {
-                    "templates/default/theme.css": "src/less/default.less"
+                    "themes/default/style.css": "src/less/default.less"
                 }
             }
         },
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
         'gh-pages': {
             'builds': {
                 options: {
-                    base: './templates'
+                    base: './themes'
                 },
                 src: "**"
             }
