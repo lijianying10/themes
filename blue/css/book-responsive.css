@@ -1,0 +1,208 @@
+	/*
+		Custom Media Query
+	*/
+@media (min-width: 1200px){
+	body{background:;}
+	
+
+}
+	
+@media (min-width: 992px) and (max-width:1199px){
+	body{background-color: pink;}
+	
+	.bannerSection img{
+		margin-top: 60px;
+		}
+	.testimonials{
+		width: 60%;
+		}
+	.testimonialsImg{
+	width:40%;
+	}
+	
+	
+	
+}
+@media (min-width: 768px) and (max-width:991px){
+
+	
+
+}
+@media (min-width: 400px) and (max-width:767px){
+	body{background:#888;}
+	.bannerSection img {
+	box-shadow: 10px 11px 5px #c2c2c2;
+	height: 450px;
+	margin: 0px auto 30px;
+	}
+	.welcomeMessage h1{
+	text-align:center;
+	}
+	.welcomeMessage h2{
+	text-align:center;
+	}
+	header p {
+	text-align:center;
+	}
+	.testimonialsImg{
+		float: inherit;
+		margin: auto;
+		}
+	.testimonialsImg img{
+		margin-bottom: 30px;
+		width:220px;
+		height:200px;
+		}
+	.testimonials{
+		float: inherit;
+		margin: auto;
+		clear: both;
+		}
+	.testimonials p {
+	  color: #666;
+	  font-size: 18px;
+	  line-height: 35px;
+	  margin-bottom: 100px;
+	  text-align: center;
+	}
+	.socialShare ul{
+		margin-bottom:30px;
+		float:left;
+		}
+	
+	.testimonialsImg{
+		float: inherit;
+		margin: auto;
+		width: 30%;
+	}
+	
+	#author p {
+		color: #444;
+		font-size: 17px;
+		line-height: 27px;
+	}
+	.header_bottom h1{
+		display:block;
+		margin:auto;
+		margin-bottom:15px;
+		float:none;
+		text-align:center;
+	}
+	button {
+		display:block;
+		margin:auto;
+		text-align:center;
+		float:none;
+	}
+	.btn{
+		margin:auto;
+		display:block;
+	}
+	.social_icons {
+		display: block;
+		margin: 20px auto 0;
+		width: 215px;
+	}
+	.socialShare{
+		float: left;
+		width: 100%;
+		margin:15px auto;
+	}
+	.subscribeSection h3 {
+		margin: 17px 0;
+	}
+	.subscribeEmail button {
+		float: left;
+		width: 100%;
+		margin:15px auto;
+	}
+	.subscribeEmail input {
+		float: left;
+		padding: 2%;
+		width: 100%;
+	}
+	.left {
+		margin: auto;
+		display: block;
+		text-align: center;
+	}
+	.right {
+		margin: auto;
+		display: block;
+		text-align: center;
+	}
+}
+
+@media (max-width:400px){
+	body{background:pink;}
+	
+	.welcomeMessage h1 {
+	font-size: 35px;
+	font-weight: bold;
+	line-height: 40px;
+	margin-bottom: 15px;
+	margin-top: 20px;
+	text-align:center;
+	}
+	.welcomeMessage h2 {
+	text-align:center;
+	}
+	header p {
+	text-align:justify;
+	font-size:17px;
+	}
+	.testimonialsImg{
+		float: inherit;
+		margin: auto;
+		width: 50%;
+		}
+	.testimonialsImg img{
+		margin-bottom: 30px;
+		width:200px;
+		height:200px;
+		}
+	.testimonials{
+		float: inherit;
+		margin: auto;
+		clear: both;
+		}
+	.testimonials p{font-size:16px;}
+	.authorImg{
+		margin-bottom: 50px;
+		}
+	.authorContent{
+		text-align: justify;
+		margin-left: 0;
+	}
+	
+	.subscribeEmail button {
+		float: left;
+		width: 100%;
+		margin:15px auto;
+	}
+	.subscribeEmail input {
+		float: left;
+		padding: 2%;
+		width: 100%;
+	}
+	.subscribeSection h3 {
+		margin: 17px 0;
+	}
+	.some-questions h1 {
+		color: #333;
+		font-size: 27px;
+		margin: 25px 0 30px;
+		text-align: center;
+	}
+	.left {
+		margin: auto;
+		display: block;
+		text-align: center;
+	}
+	.right {
+		margin: auto;
+		display: block;
+		text-align: center;
+	}
+	
+}
