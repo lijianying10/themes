@@ -1,5 +1,5 @@
 {% import "./macros/book.html" as mcBook %}
-{% set assetsPath = "" %}
+{% set assetsPath = "http://themes.gitbook.com/default" %}
 
 <!doctype html>
 <html lang="en">
@@ -7,10 +7,10 @@
         <meta charset="utf-8">
         {{ mcBook.metatags(book) }}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="icon" href="{{ "assets/images/logo/favicon.ico"|absoluteUrl }}">
+        <link rel="icon" href="https://www.gitbook.io/assets/images/logo/favicon.ico">
         <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,800,700,300|Merriweather:400,700,900,300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{{ "assets/themes/default.css"|absoluteUrl }}">
-        <link href='{{ "/assets/fonts/octicons/octicons.css"|absoluteUrl }}' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ assetsPath }}/default/theme.css">
+        <link href='//cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.css' rel='stylesheet' type='text/css'>
         <style type="text/css">
             {% block css %}
             /* Custom CSS */
