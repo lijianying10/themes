@@ -3,11 +3,19 @@ module.exports = function (grunt) {
     // Load NPM tasks
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks("grunt-bower-install-simple");
     grunt.loadNpmTasks('grunt-gh-pages');
 
     // Init GRUNT configuraton
     grunt.initConfig({
         'pkg': grunt.file.readJSON('package.json'),
+        'bower-install-simple': {
+            options: {
+                color:       true,
+                production:  false,
+                directory:   "src/vendors"
+            }
+        },
         'less': {
             development: {
                 options: {
@@ -42,6 +50,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build', [
+        'bower-install-simple',
         'less'
     ]);
 

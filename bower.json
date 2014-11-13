@@ -1,0 +1,7 @@
+{
+    "name": "gitbook-templates",
+    "dependencies": {
+        "fontawesome": "4.2.0",
+        "bootstrap": "3.0.0"
+    }
+}
