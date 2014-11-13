@@ -7,7 +7,7 @@ section{
     }
 
 .bannerSection{
-    background: url("img/bannerBG.jpg") no-repeat fixed;
+    background: url("../img/bannerBG.jpg") no-repeat fixed;
     }
 .bannerSection  img{
     height: 450px;
@@ -22,7 +22,7 @@ section{
     padding: 80px 0;
     }
 .text-center{
-    
+
     }
 .welcomeMessage{}
 .welcomeMessage h1{
@@ -161,7 +161,7 @@ section{
     float: left;
     }
 .carousel-indicators{
-    
+
     }
 .testimonials p{
     font-size:18px;

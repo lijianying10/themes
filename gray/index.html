@@ -2,25 +2,25 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+ 	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-	{{ mcBook.metatags(book) }}
+		{{ mcBook.metatags(book) }}
 
-    <link href="{{ assetsPath }}/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ assetsPath }}/css/theme.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+		<link href="{{ assetsPath }}/css/bootstrap.min.css" rel="stylesheet">
+		<link href="{{ assetsPath }}/css/theme.css" rel="stylesheet">
+		<link href="css/responsive.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
 	</head>
 	<body>
 		<section class="bannerSection">
@@ -54,9 +54,15 @@
 					<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
 						<div class="socialShare">
 							<ul>
-								<li><span>1000</span><a href="#"><i class="fa fa-facebook-square"> Like</i></a></li>
-								<li><span>1000</span><a href="#"><i class="fa fa-twitter-square"> Tweet</i></a></li>
-								<li><span>1000</span><a href="#"><i class="fa fa-google-plus-square"> Share</i></a></li>
+								<li>
+									<iframe src="//www.facebook.com/plugins/like.php?href={{ book.urls.access|url_encode }}&amp;width&amp;layout=box_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=65&amp;width=50&amp;appId=1450939251838472" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:65px;width:50px;" allowTransparency="true"></iframe>
+								</li>
+								<li>
+									<iframe scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/tweet_button.5e910aa7872029f6d652d9e5838088b3.en.html#_=1412337201320&amp;count=vertical&amp;id=twitter-widget-2&amp;lang=en&amp;original_referer={{ book.urls.access|url_encode }}&amp;size=m&amp;text={{ book.title|url_encode }}&amp;url={{ book.urls.access|url_encode }}&amp;via=GitBookIO&amp;related=GitBookIO" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-vertical" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 57px; height: 65px;"></iframe>
+								</li>
+								<li>
+									<iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 57px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 65px;" tabindex="0" vspace="0" width="100%" id="I0_1412341297994" name="I0_1412341297994" src="https://apis.google.com/u/0/se/0/_/+1/sharebutton?plusShare=true&amp;usegapi=1&amp;action=share&amp;annotation=vertical-bubble&amp;height=60&amp;width=NaN&amp;origin={{ book.urls.access|url_encode }}&amp;url={{ book.urls.access|url_encode }}%2F&amp;gsrc=3p&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.t4r-jMKfL1Q.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Ft%3Dzcms%2Frs%3DAItRSTOhh3AtYEbE2JK11RMx5mJii_4HMA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh&amp;id=I0_1412341297994&amp;parent={{ book.urls.access|url_encode }}&amp;pfname=%2FI0_1412341293033&amp;rpctoken=21171982" data-gapiattached="true" title="+Share"></iframe>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -498,36 +504,9 @@
 
 
 
-		<script src="js/jquery-2.js"></script>
-		<script type="text/javascript" src="js/scripts.js"></script>
-		<script src="js/main_002.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-
-
-<div id="fb-root"></div>
-<div id="fb-root"></div>
- <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : 'your-app-id',
-          xfbml      : true,
-          version    : 'v2.1'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-
-		<script type="text/javascript">
-			window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
-		</script>
-
-
+		<script src="{{ assetsPath }}/js/jquery-2.js"></script>
+		<script src="{{ assetsPath }}/js/scripts.js"></script>
+		<script src="{{ assetsPath }}/js/main_002.js"></script>
+		<script src="{{ assetsPath }}/js/bootstrap.min.js"></script>
 	</body>
 </html>
