@@ -1,2 +1,1 @@
-# Templates for Book Homepages
-
+# Templates for book homepages
