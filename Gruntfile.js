@@ -53,7 +53,8 @@ module.exports = function (grunt) {
                     })
                     .concat([
                         '!**/*.less',
-                        'list.json'
+                        'list.json',
+                        'package.json'
                     ])
                     .value(),
                 dest: 'build/',
