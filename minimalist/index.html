@@ -1,0 +1,35 @@
+{% import "../macros/book.html" as mcBook %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        {{ mcBook.metatags(book) }}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="icon" href="https://www.gitbook.io/assets/images/logo/favicon.ico">
+        <link rel="stylesheet" href="{{ "style.css"|assetUrl }}">
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+    {% block body %}
+        <div class="book">
+            <!-- Cover -->
+            <div class="cover">
+                <img src="{{ book.cover.large }}" />
+            </div>
+
+            <!-- Actions -->
+            <p>
+                <a href="{{ book.urls.read }}" class="btn btn-lg btn-default btn-block">
+                {% if book.price > 0 and not book.permissions.read %}Buy Now for ${{ book.price.toFixed(2) }}{% else %}Read Online{% endif %}
+                </a>
+            </p>
+            {% if book.price > 0 and not book.permissions.read %}
+            <p class="help-block">By buying this book, You get unlimited access to the online version (with any browser), and ebook versions (ePub, Mobi and PDF).</p>
+            {% else %}
+            <p class="help-block">You can also download this book as: <a href="{{ book.urls.download.epub }}" rel="nofollow"><b>ePUB</b></a>, <a href="{{ book.urls.download.mobi }}" rel="nofollow"><b>MOBI</b></a> or <a href="{{ book.urls.download.pdf }}" rel="nofollow"><b>PDF</b></a>.</p>
+            {% endif %}
+        </div>
+    {% endblock %}
+    </body>
+</html>
