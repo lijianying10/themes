@@ -4,10 +4,10 @@ var _ = require("lodash");
 module.exports = function (grunt) {
     // Load NPM tasks
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks("grunt-bower-install-simple");
     grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     // Init GRUNT configuraton
     grunt.initConfig({
@@ -37,37 +37,33 @@ module.exports = function (grunt) {
                     .value()
             }
         },
-        'watch': {
-            'less': {
-                files: ['**/*.less'],
-                tasks: [
-                    'build'
-                ],
-                options: {
-                    spawn: false
-                },
-            },
-        },
         'gh-pages': {
             'builds': {
                 options: {
-                    base: './themes'
+                    base: './build'
                 },
                 src: "**"
             }
         },
         'copy': {
             'themes': {
-                src: _.map(THEMES, function(theme) {
-                    return theme.id+"/**";
-                }),
+                src: _.chain(THEMES)
+                    .map(function(theme) {
+                        return theme.id+"/**";
+                    })
+                    .concat(['!**/*.less'])
+                    .value(),
                 dest: 'build/',
             },
+        },
+        'clean': {
+            'build': ["./build"]
         }
     });
 
     grunt.registerTask('build', [
         'bower-install-simple',
+        'clean',
         'copy:themes',
         'less'
     ]);
@@ -78,7 +74,6 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'build',
-        'watch'
+        'build'
     ]);
 };
