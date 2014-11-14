@@ -53,12 +53,34 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <!-- Intro -->
-                    <div class="readme">
-                    {{ mcBook.readme(book) }}
-                    </div>
+                    <div class="details">
+                        <!-- Intro -->
+                        <div class="readme">
+                        {{ mcBook.readme(book) }}
+                        </div>
 
-                    <hr class="small">
+                        <hr class="small">
+
+                        <!-- Summary -->
+                        <div class="tableofcontents clearfix">
+                            <ul class="summary">
+                            {% set chapterPerColumn = 1 %}
+                            {% if book.summary.length > 10 %}{% set chapterPerColumn = 5 %}{% endif %}
+                            {% if book.summary.length > 20 %}{% set chapterPerColumn = 10 %}{% endif %}
+                            {% for chapter in book.summary %}
+                                {% if (loop.index0 % chapterPerColumn) == 0 %}<div class="col-xs-6">{% endif %}
+                                <li>
+                                    <span class="level">{{ chapter.level }}.</span> {{ chapter.title }}
+                                </li>
+                                {% if (loop.index0 % chapterPerColumn) == (chapterPerColumn - 1) %}</div>{% endif %}
+                            {% endfor %}
+                            </ul>
+                        </div>
+
+                        <hr class="dashed">
+                        <p>Credits</p>
+                        <p>Written by {% for user in book.collaborators %}{% if loop.last %}and{% else %},{% endif %} {{ user.name }}{% endfor %}. Published as an ebook using <a href="https://www.gitbook.com">GitBook</a>.</p>
+                    </div>
                 </div>
             </div>
         </div>

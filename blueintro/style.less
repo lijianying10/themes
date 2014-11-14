@@ -43,19 +43,43 @@ header {
     }
 }
 
+.details {
+    margin-bottom: 30px;
 
-.readme {
-    section {
-        .markdown-body();
-        margin: @readme-padding;
+    .readme {
+        section {
+            .markdown-body();
+            margin: @readme-padding;
+        }
     }
-}
 
-hr{
-    &.small {
-        width: 50%;
-        margin-right: auto;
-        margin-left: auto;
-        border-color: #000;
+    hr{
+        &.small {
+            width: 30%;
+            margin: 30px auto;
+            border-color: #000;
+        }
+        &.dashed {
+            margin: 30px auto;
+            border-style: dashed;
+            border-color: #000;
+        }
+    }
+
+    .tableofcontents {
+        ul {
+            list-style-type: circle;
+
+            li {
+                padding: 4px 0px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+
+        div {
+            padding: 5px;
+        }
     }
 }
