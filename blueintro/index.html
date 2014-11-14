@@ -51,6 +51,18 @@
                     <div class="cover">
                         <img src="{{ book.cover.large }}" />
                     </div>
+
+                    <!-- Actions -->
+                    <p>
+                        <a href="{{ book.urls.read }}" class="btn btn-default btn-block">
+                        {% if book.price > 0 and not book.permissions.read %}Buy Now for ${{ book.price.toFixed(2) }}{% else %}Read Online{% endif %}
+                        </a>
+                    </p>
+                    {% if book.price > 0 and not book.permissions.read %}
+                    <p class="help-block">By buying this book, You get unlimited access to the online version (with any browser), and ebook versions (ePub, Mobi and PDF).</p>
+                    {% else %}
+                    <p class="help-block">You can also download this book as: <a href="{{ book.urls.download.epub }}" rel="nofollow"><b>ePUB</b></a>, <a href="{{ book.urls.download.mobi }}" rel="nofollow"><b>MOBI</b></a> or <a href="{{ book.urls.download.pdf }}" rel="nofollow"><b>PDF</b></a>.</p>
+                    {% endif %}
                 </div>
                 <div class="col-md-8">
                     <div class="details">
@@ -79,7 +91,7 @@
 
                         <hr class="dashed">
                         <p>Credits</p>
-                        <p>Written by {% for user in book.collaborators %}{% if loop.last %}and{% else %},{% endif %} {{ user.name }}{% endfor %}. Published as an ebook using <a href="https://www.gitbook.com">GitBook</a>.</p>
+                        <p>Written by{% for user in book.collaborators %}{% if loop.last %} and{% elif not loop.first %},{% endif %} {{ user.name }}{% endfor %}. Published as an ebook using <a href="https://www.gitbook.com">GitBook</a>.</p>
                     </div>
                 </div>
             </div>

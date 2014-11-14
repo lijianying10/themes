@@ -12,6 +12,7 @@
         "grunt-gh-pages": "0.9.1",
         "grunt-contrib-copy": "0.7.0",
         "grunt-contrib-clean": "0.6.0",
+        "grunt-file-creator": "0.1.2",
         "lodash": "2.4.1"
     },
     "homepage": "http://www.gitbook.com/",

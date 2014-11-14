@@ -1,5 +1,6 @@
 var THEMES = require("./list.json");
 var _ = require("lodash");
+var pkg = require("./package.json");
 
 module.exports = function (grunt) {
     // Load NPM tasks
@@ -8,10 +9,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-file-creator');
 
     // Init GRUNT configuraton
     grunt.initConfig({
-        'pkg': grunt.file.readJSON('package.json'),
+        'pkg': pkg,
         'bower-install-simple': {
             options: {
                 color:       true,
@@ -54,8 +56,7 @@ module.exports = function (grunt) {
                     .concat([
                         'macros/**',
                         '!**/*.less',
-                        'list.json',
-                        'package.json'
+                        'list.json'
                     ])
                     .value(),
                 dest: 'build/',
@@ -63,6 +64,19 @@ module.exports = function (grunt) {
         },
         'clean': {
             'build': ["./build"]
+        },
+        'file-creator': {
+            'package': {
+                "build/package.json": function(fs, fd, done) {
+                    fs.writeSync(fd, JSON.stringify({
+                        name: pkg.name,
+                        version: pkg.version,
+                        author: pkg.author,
+                        main: pkg.main
+                    }, null, 4));
+                    done();
+                }
+            }
         }
     });
 
@@ -70,6 +84,7 @@ module.exports = function (grunt) {
         'bower-install-simple',
         'clean',
         'copy:themes',
+        'file-creator:package',
         'less'
     ]);
 
