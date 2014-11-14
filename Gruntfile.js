@@ -52,6 +52,7 @@ module.exports = function (grunt) {
                         return theme.id+"/**";
                     })
                     .concat([
+                        'macros/**',
                         '!**/*.less',
                         'list.json',
                         'package.json'
