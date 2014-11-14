@@ -1,5 +1,5 @@
 @import "../vendors/bootstrap/less/bootstrap.less";
-@import "components/markdown.less";
+@import "../vendors/github-markdown-less/github-markdown.less";
 
 @link-color: #ea4b35;
 @link-hover-color: #c0392b;
@@ -135,7 +135,7 @@ hr.transparent {
 
 .readme {
     section {
-        .component-markdown(@md-color: inherit, @md-line-height: 1.6);
+        .markdown-body();
         margin: @readme-padding;
 
         &:first-child > h1:first-child {

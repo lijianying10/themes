@@ -1,5 +1,5 @@
 @import "../vendors/bootstrap/less/bootstrap.less";
-@import "components/markdown.less";
+@import "../vendors/github-markdown-less/github-markdown.less";
 
 @readme-padding: 20px;
 
@@ -46,7 +46,7 @@ header {
 
 .readme {
     section {
-        .component-markdown(@md-color: inherit, @md-line-height: 1.6);
+        .markdown-body();
         margin: @readme-padding;
     }
 }

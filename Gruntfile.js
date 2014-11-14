@@ -1,3 +1,5 @@
+var THEMES = require("./list.json");
+var _ = require("lodash");
 
 module.exports = function (grunt) {
     // Load NPM tasks
@@ -5,6 +7,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks("grunt-bower-install-simple");
     grunt.loadNpmTasks('grunt-gh-pages');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Init GRUNT configuraton
     grunt.initConfig({
@@ -23,10 +26,15 @@ module.exports = function (grunt) {
                     yuicompress: true,
                     optimization: 2
                 },
-                files: {
-                    "themes/default/style.css": "src/less/default.less",
-                    "themes/blueintro/style.css": "src/less/blueintro.less"
-                }
+                files: _.chain(THEMES)
+                    .map(function(theme) {
+                        return [
+                            "build/"+theme.id+"/style.css",
+                            theme.id+"/style.less"
+                        ];
+                    })
+                    .object()
+                    .value()
             }
         },
         'watch': {
@@ -47,11 +55,20 @@ module.exports = function (grunt) {
                 },
                 src: "**"
             }
+        },
+        'copy': {
+            'themes': {
+                src: _.map(THEMES, function(theme) {
+                    return theme.id+"/**";
+                }),
+                dest: 'build/',
+            },
         }
     });
 
     grunt.registerTask('build', [
         'bower-install-simple',
+        'copy:themes',
         'less'
     ]);
 
