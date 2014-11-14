@@ -1,5 +1,4 @@
 {% import "../macros/book.html" as mcBook %}
-{% set assetsPath = "http://gitbookio.github.io/themes" %}
 
 <!doctype html>
 <html lang="en">
@@ -8,7 +7,7 @@
         {{ mcBook.metatags(book) }}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="icon" href="https://www.gitbook.io/assets/images/logo/favicon.ico">
-        <link rel="stylesheet" href="{{ assetsPath }}/blueintro/style.css">
+        <link rel="stylesheet" href="{{ "style.css"|assetUrl }}">
         <link href='//cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.css' rel='stylesheet' type='text/css'>
         <style type="text/css">
             {% block css %}
