@@ -2,6 +2,7 @@
     "name": "gitbook-themes",
     "dependencies": {
         "fontawesome": "4.2.0",
-        "bootstrap": "3.0.0"
+        "bootstrap": "3.0.0",
+        "github-markdown-less": "2.0.0"
     }
 }

@@ -13,7 +13,7 @@ module.exports = function (grunt) {
             options: {
                 color:       true,
                 production:  false,
-                directory:   "src/vendors"
+                directory:   "vendors"
             }
         },
         'less': {
