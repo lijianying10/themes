@@ -51,7 +51,10 @@ module.exports = function (grunt) {
                     .map(function(theme) {
                         return theme.id+"/**";
                     })
-                    .concat(['!**/*.less'])
+                    .concat([
+                        '!**/*.less',
+                        'list.json'
+                    ])
                     .value(),
                 dest: 'build/',
             },
