@@ -1,0 +1,29 @@
+[
+    {
+        "id": "default",
+        "title": "Default",
+        "author": {
+            "name": "Samy Pessé",
+            "email": "samypesse@gmail.com",
+            "url": "http://samypesse.fr"
+        }
+    },
+    {
+        "id": "blueintro",
+        "title": "Blue Intro",
+        "author": {
+            "name": "Samy Pessé",
+            "email": "samypesse@gmail.com",
+            "url": "http://samypesse.fr"
+        }
+    },
+    {
+        "id": "minimalist",
+        "title": "Minimalist",
+        "author": {
+            "name": "Samy Pessé",
+            "email": "samypesse@gmail.com",
+            "url": "http://samypesse.fr"
+        }
+    }
+]

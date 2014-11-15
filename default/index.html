@@ -1,0 +1,190 @@
+{% import "../macros/book.html" as mcBook %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        {{ mcBook.metatags(book) }}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="icon" href="https://www.gitbook.io/assets/images/logo/favicon.ico">
+        <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,800,700,300|Merriweather:400,700,900,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ "style.css"|assetUrl }}">
+        <link href='//cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.css' rel='stylesheet' type='text/css'>
+        <style type="text/css">
+            {% block css %}
+            /* Custom CSS */
+            {% endblock %}
+        </style>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+    {% block body %}
+        {% if book.languages.length > 0 %}
+        <div class="languages">
+            <div class="container">
+                {{ mcBook.languages(book) }}
+            </div>
+        </div>
+        {% endif %}
+        <div class="intro">
+            <div class="container">
+                <!-- Intro: cover, actions and description -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="cover">
+                            <img src="{{ book.cover.large }}" />
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="infos">
+                            <h1>{{ book.title }}</h1>
+                            <p class="author">
+                                <a href="{{ book.author.urls.profile }}">{{ book.author.name }}</a>
+                                {% for user in book.collaborators %}
+                                {% if loop.last %}and{% else %},{% endif %} <a href="{{ user.urls.profile }}">{{ user.name }}</a>
+                                {% endfor %}
+                            </p>
+                            <p class="description">{{ book.description }}</p>
+                        </div>
+                        <div class="actions">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <a href="{{ book.urls.read }}" class="action">
+                                    {% if book.price > 0 and not book.permissions.read %}Buy Now for ${{ book.price.toFixed(2) }}{% else %}Read{% endif %}
+                                    </a>
+                                </div>
+                                <div class="col-sm-4">
+                                    {% if book.transactions.donations %}
+                                    <a href="{{ book.urls.donate }}" class="action">Donate</a>
+                                    {% else %}
+                                    <a href="{{ book.urls.reviews }}" class="action">Review</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            {% if book.price > 0 and not book.permissions.read %}
+                            <p class="help-block">By buying this book, You get unlimited access to the online version (with any browser), and ebook versions (ePub, Mobi and PDF).</p>
+                            {% else %}
+                            <p class="help-block">You can also download this book as: <a href="{{ book.urls.download.epub }}" rel="nofollow"><b>ePUB</b> (for iPad, iPhone, Mac)</a>, <a href="{{ book.urls.download.mobi }}" rel="nofollow"><b>MOBI</b> (for Kindle)</a> or <a href="{{ book.urls.download.pdf }}" rel="nofollow"><b>PDF</b> (for Windows and others)</a>.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="container">
+                <!-- Mailing list and sharing -->
+                <div class="row">
+                    <div class="col-md-5 hidden-sm hidden-xs">
+                        <div class="sharing">
+                            <div class="share-box">
+                                <iframe src="//www.facebook.com/plugins/like.php?href={{ book.urls.access|url_encode }}&amp;width&amp;layout=box_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=65&amp;width=50&amp;appId=1450939251838472" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:65px;width:50px;" allowTransparency="true"></iframe>
+                            </div>
+                            <div class="share-box">
+                                <iframe scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/tweet_button.5e910aa7872029f6d652d9e5838088b3.en.html#_=1412337201320&amp;count=vertical&amp;id=twitter-widget-2&amp;lang=en&amp;original_referer={{ book.urls.access|url_encode }}&amp;size=m&amp;text={{ book.title|url_encode }}&amp;url={{ book.urls.access|url_encode }}&amp;via=GitBookIO&amp;related=GitBookIO" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-vertical" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 57px; height: 65px;"></iframe>
+                            </div>
+                            <div class="share-box">
+                                <iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 57px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 65px;" tabindex="0" vspace="0" width="100%" id="I0_1412341297994" name="I0_1412341297994" src="https://apis.google.com/u/0/se/0/_/+1/sharebutton?plusShare=true&amp;usegapi=1&amp;action=share&amp;annotation=vertical-bubble&amp;height=60&amp;width=NaN&amp;origin={{ book.urls.access|url_encode }}&amp;url={{ book.urls.access|url_encode }}%2F&amp;gsrc=3p&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.t4r-jMKfL1Q.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Ft%3Dzcms%2Frs%3DAItRSTOhh3AtYEbE2JK11RMx5mJii_4HMA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh&amp;id=I0_1412341297994&amp;parent={{ book.urls.access|url_encode }}&amp;pfname=%2FI0_1412341293033&amp;rpctoken=21171982" data-gapiattached="true" title="+Share"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="mailing">
+                            <p>Subscribe to this book updates:</p>
+
+                            <form method="post" action="{{ book.urls.subscribe }}">
+                                <div class="input-group">
+                                    <input type="email" class="form-control" name="email" placeholder="enter your email">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default">Subscribe</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                {% if book.reviews.best.length > 0 %}
+                <!-- Reviews -->
+                <div class="row">
+                    <div class="reviews">
+                        {% for review in book.reviews.best %}
+                        <div class="{% if book.reviews.best.length == 1 %}col-sm-12{% else %}col-sm-6{% endif %}">
+                            <div class="review">
+                                <p><em><a href="{{ book.urls.reviews }}">“{{ review.content }}”&nbsp;</a></em><a href="{{ review.author.urls.profile }}" target="_blank">- {{ review.author.name }}</a></p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <hr>
+                {% endif %}
+
+
+                <!-- Readme -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="readme">
+                        {{ mcBook.readme(book) }}
+                        </div>
+                    </div>
+                </div>
+
+                {% if book.summary.length > 0 %}
+                <!-- Table of contents -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tableofcontents clearfix">
+                            <ul class="summary">
+                            {% set chapterPerColumn = 1 %}
+                            {% if book.summary.length > 10 %}{% set chapterPerColumn = 5 %}{% endif %}
+                            {% if book.summary.length > 20 %}{% set chapterPerColumn = 10 %}{% endif %}
+                            {% for chapter in book.summary %}
+                                {% if (loop.index0 % chapterPerColumn) == 0 %}<div class="col-sm-4 col-xs-6">{% endif %}
+                                <li>
+                                    <span class="level">{{ chapter.level }}.</span> {{ chapter.title }}
+                                </li>
+                                {% if (loop.index0 % chapterPerColumn) == (chapterPerColumn - 1) %}</div>{% endif %}
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Metadata -->
+                <hr>
+                <div class="row">
+                    <div class="metadata">
+                        <div class="col-md-4 col-sm-6 text-center">
+                            <p>
+                                <i class="octicon octicon-calendar"></i>
+                                {% if book.dates.build %}Updated on {{ book.dates.build|date("M d, Y") }}{% else %}Published on {{ book.dates.created|date("M d, Y") }}{% endif %}
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-sm-6 text-center">
+                            <p>
+                                <i class="octicon octicon-law"></i>
+                                {{ book.license.title }}
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <p>
+                                <a href="https://www.gitbook.io" target="_blank">Published with GitBook</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% block js %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        {% endblock %}
+    {% endblock %}
+    </body>
+</html>

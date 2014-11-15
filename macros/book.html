@@ -1,0 +1,32 @@
+{% macro metatags(_book) %}
+    <title>{{ book.title }}</title>
+    <meta name="description" content="{{ _book.description }}">
+    <meta name="author" content="{{ _book.author.name }}">
+    <meta itemprop="name" content="{{ _book.title }}" />
+    <meta itemprop="description" content="{{ _book.description }}" />
+    <meta itemprop="image" content="{{ _book.cover.small }}" />
+    <meta property="books:rating:value" content="{{ _book.reviews.rating }}" />
+    <meta property="books:rating:scale" content="{{ _book.reviews.rating }}" />
+    <meta property="books:author" content="{{ _book.author.urls.profile }}" />
+    {% for category in _book.categories %}
+    <meta property="book:tag" content="{{ category|title }}">
+    {% endfor %}
+{% endmacro %}
+
+{% macro readme(_book) %}
+    {% for section in book.readme.content %}
+        {% if section.type == "normal" %}<section>{% autoescape false %}{{ section.content }}{% endautoescape %}</section>{% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% macro languages(_book) %}
+    <ol class="breadcrumb">
+    {% for language in _book.languages %}
+        {% if query.language == language %}
+        <li class="active">{{ language }}</li>
+        {% else %}
+        <li><a href="?lang={{ language }}">{{ language }}</a></li>
+        {% endif %}
+    {% endfor %}
+    </ol>
+{% endmacro %}
