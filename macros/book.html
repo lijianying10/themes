@@ -18,3 +18,15 @@
         {% if section.type == "normal" %}<section>{% autoescape false %}{{ section.content }}{% endautoescape %}</section>{% endif %}
     {% endfor %}
 {% endmacro %}
+
+{% macro languages(_book) %}
+    <ol class="breadcrumb">
+    {% for language in _book.languages %}
+        {% if query.language == language %}
+        <li class="active">{{ language }}</li>
+        {% else %}
+        <li><a href="?lang={{ language }}">{{ language }}</a></li>
+        {% endif %}
+    {% endfor %}
+    </ol>
+{% endmacro %}

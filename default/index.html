@@ -22,15 +22,7 @@
         {% if book.languages.length > 0 %}
         <div class="languages">
             <div class="container">
-                <ol class="breadcrumb">
-                {% for language in book.languages %}
-                    {% if query.language == language %}
-                    <li class="active">{{ language }}</li>
-                    {% else %}
-                    <li><a href="?lang={{ language }}">{{ language }}</a></li>
-                    {% endif %}
-                {% endfor %}
-                </ol>
+                {{ mcBook.languages(book) }}
             </div>
         </div>
         {% endif %}

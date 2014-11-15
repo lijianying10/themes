@@ -12,6 +12,14 @@
     </head>
     <body>
     {% block body %}
+        {% if book.languages.length > 0 %}
+        <div class="languages">
+            <div class="container">
+                {{ mcBook.languages(book) }}
+            </div>
+        </div>
+        {% endif %}
+
         <div class="book">
             <!-- Cover -->
             <div class="cover">
