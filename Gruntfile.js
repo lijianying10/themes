@@ -42,7 +42,8 @@ module.exports = function (grunt) {
         'gh-pages': {
             'builds': {
                 options: {
-                    base: './build'
+                    base: './build',
+                    branch: 'builds'
                 },
                 src: "**"
             }
