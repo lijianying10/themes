@@ -3,6 +3,7 @@
     "dependencies": {
         "fontawesome": "4.2.0",
         "bootstrap": "3.0.0",
-        "github-markdown-less": "2.0.0"
+        "github-markdown-less": "2.0.0",
+        "skeleton": "git+https://github.com/dhgamache/Skeleton.git#84acb36f5c5e6a282fe8b69fa56ba9adb42140d6"
     }
 }
