@@ -22,13 +22,6 @@
                         <a href="{{ book.urls.read }}" class="button u-pull-right">
                             {% if book.price > 0 and not book.permissions.read %}Buy Now for ${{ book.price.toFixed(2) }}{% else %}Read{% endif %}
                         </a>
-                        <!--
-                        {% if book.permissions.read %}
-                        <a href="{{ book.urls.download.epub }}" class="button">ePub</a>
-                        <a href="{{ book.urls.download.pdf }}" class="button">PDF</a>
-                        <a href="{{ book.urls.download.mobi }}" class="button">Mobi</a>
-                        {% endif %}
-                        -->
                     </div>
                 </div>
             </div>
@@ -40,7 +33,10 @@
                     <div class="four columns">
                         <div class="cover">
                             <img src="{{ book.cover.large }}" />
-                        </div>            
+                        </div>
+                        {% if book.permissions.read %}
+                        <p>You can download this book as: <a href="{{ book.urls.download.epub }}" rel="nofollow">ePUB</a>, <a href="{{ book.urls.download.mobi }}" rel="nofollow">MOBI</a> or <a href="{{ book.urls.download.pdf }}" rel="nofollow">PDF</a>.</p>
+                        {% endif %}
                     </div>
                     <div class="eight columns">
                         <!-- Readme -->

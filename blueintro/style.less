@@ -1,15 +1,24 @@
-@import "../vendors/bootstrap/less/bootstrap.less";
-@import "../vendors/github-markdown-less/github-markdown.less";
+@import (inline) "../vendors/skeleton/css/normalize.css";
+@import (inline) "../vendors/skeleton/css/skeleton.css";
 
-@readme-padding: 20px;
+@readme-padding: 20px 0px;
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 
 body {
-    color: #494b4d;
+    font-size: 1.5em;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: 'Open Sans', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #222; 
 }
 
 header {
     background-color: #4ca7bc;
-    color: #FFF;
+    color: #fff;
     margin-bottom: 40px;
 
     h1 {
@@ -18,15 +27,6 @@ header {
         line-height: 1.5em;
         margin: 0px;
         padding: 25px 0px;
-    }
-
-    .languages {
-        background: #f5f5f5;
-
-        .breadcrumb {
-            background: none;
-            margin: 0px;
-        }
     }
 }
 
@@ -47,38 +47,13 @@ header {
 
     .readme {
         section {
-            .markdown-body();
-            margin: @readme-padding;
-        }
-    }
-
-    hr{
-        &.small {
-            width: 30%;
-            margin: 30px auto;
-            border-color: #000;
-        }
-        &.dashed {
-            margin: 30px auto;
-            border-style: dashed;
-            border-color: #000;
-        }
-    }
-
-    .tableofcontents {
-        ul {
-            list-style-type: circle;
-
-            li {
-                padding: 4px 0px;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
+            img {
+                max-width: 100%;
             }
-        }
 
-        div {
-            padding: 5px;
+            &:first-child > h1:first-child {
+                display: none;
+            }
         }
     }
 }
