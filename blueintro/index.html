@@ -7,8 +7,8 @@
         {{ mcBook.metatags(book) }}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="icon" href="https://www.gitbook.com/assets/images/logo/favicon.ico">
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{{ "style.css"|assetUrl }}">
-        <link href='//cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.css' rel='stylesheet' type='text/css'>
         <style type="text/css">
             {% block css %}
             /* Custom CSS */
@@ -23,29 +23,12 @@
             <div class="container">
                 <h1>{{ book.title }}</h1>
             </div>
-
-            <!-- Language List -->
-            {% if book.languages.length > 0 %}
-            <div class="languages">
-                <div class="container">
-                    <ol class="breadcrumb">
-                    {% for language in book.languages %}
-                        {% if query.language == language %}
-                        <li class="active">{{ language }}</li>
-                        {% else %}
-                        <li><a href="?lang={{ language }}">{{ language }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                    </ol>
-                </div>
-            </div>
-            {% endif %}
         </header>
 
         <!-- Details: cover, readme -->
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="columns four">
                     <!-- Cover -->
                     <div class="cover">
                         <img src="{{ book.cover.large }}" />
@@ -53,44 +36,25 @@
 
                     <!-- Actions -->
                     <p>
-                        <a href="{{ book.urls.read }}" class="btn btn-lg btn-default btn-block">
+                        <a href="{{ book.urls.read }}" class="button u-full-width">
                         {% if book.price > 0 and not book.permissions.read %}Buy Now for ${{ book.price.toFixed(2) }}{% else %}Read Online{% endif %}
                         </a>
                     </p>
                     {% if book.price > 0 and not book.permissions.read %}
-                    <p class="help-block">By buying this book, You get unlimited access to the online version (with any browser), and ebook versions (ePub, Mobi and PDF).</p>
+                    <p>By buying this book, You get unlimited access to the online version (with any browser), and ebook versions (ePub, Mobi and PDF).</p>
                     {% else %}
-                    <p class="help-block">You can also download this book as: <a href="{{ book.urls.download.epub }}" rel="nofollow"><b>ePUB</b></a>, <a href="{{ book.urls.download.mobi }}" rel="nofollow"><b>MOBI</b></a> or <a href="{{ book.urls.download.pdf }}" rel="nofollow"><b>PDF</b></a>.</p>
+                    <p>You can also download this book as: <a href="{{ book.urls.download.epub }}" rel="nofollow">ePUB</a>, <a href="{{ book.urls.download.mobi }}" rel="nofollow">MOBI</a> or <a href="{{ book.urls.download.pdf }}" rel="nofollow">PDF</a>.</p>
                     {% endif %}
                 </div>
-                <div class="col-md-8">
+                <div class="columns eight">
                     <div class="details">
                         <!-- Intro -->
                         <div class="readme">
                         {{ mcBook.readme(book) }}
                         </div>
 
-                        <hr class="small">
-
-                        <!-- Summary -->
-                        <div class="tableofcontents clearfix">
-                            <ul class="summary">
-                            {% set chapterPerColumn = 1 %}
-                            {% if book.summary.length > 10 %}{% set chapterPerColumn = 5 %}{% endif %}
-                            {% if book.summary.length > 20 %}{% set chapterPerColumn = 10 %}{% endif %}
-                            {% for chapter in book.summary %}
-                                {% if (loop.index0 % chapterPerColumn) == 0 %}<div class="col-xs-6">{% endif %}
-                                <li>
-                                    <span class="level">{{ chapter.level }}.</span> {{ chapter.title }}
-                                </li>
-                                {% if (loop.index0 % chapterPerColumn) == (chapterPerColumn - 1) %}</div>{% endif %}
-                            {% endfor %}
-                            </ul>
-                        </div>
-
-                        <hr class="dashed">
-                        <p>Credits</p>
-                        <p>Written by{% for user in book.collaborators %}{% if loop.last %} and{% elif not loop.first %},{% endif %} {{ user.name }}{% endfor %}. Published as an ebook using <a href="https://www.gitbook.com">GitBook</a>.</p>
+                        <hr>
+                        <p>Written by {{ book.author.name }}{% for user in book.collaborators %}{% if loop.last %} and{% elif not loop.first %},{% endif %} {{ user.name }}{% endfor %}. Published as an ebook using <a href="https://www.gitbook.com">GitBook</a>.</p>
                     </div>
                 </div>
             </div>
