@@ -14,7 +14,7 @@
 {% endmacro %}
 
 {% macro readme(_book) %}
-    {% for section in book.readme.content %}
+    {% for section in _book.readme.content %}
         {% if section.type == "normal" %}<section>{% autoescape false %}{{ section.content }}{% endautoescape %}</section>{% endif %}
     {% endfor %}
 {% endmacro %}
