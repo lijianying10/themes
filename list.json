@@ -34,5 +34,14 @@
             "email": "samypesse@gmail.com",
             "url": "http://samypesse.fr"
         }
+    },
+    {
+        "id": "novelpage",
+        "title": "Novel Page",
+        "author": {
+            "name": "Samy Pessé",
+            "email": "samypesse@gmail.com",
+            "url": "http://samypesse.fr"
+        }
     }
 ]
