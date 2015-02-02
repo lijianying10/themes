@@ -10,6 +10,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-file-creator');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-shell-spawn');
 
     // Init GRUNT configuraton
     grunt.initConfig({
@@ -64,7 +66,7 @@ module.exports = function (grunt) {
             },
         },
         'clean': {
-            'build': ["./build"]
+            'build': ["./build/**"]
         },
         'file-creator': {
             'package': {
@@ -77,6 +79,30 @@ module.exports = function (grunt) {
                     }, null, 4));
                     done();
                 }
+            }
+        },
+        'watch': {
+            'less': {
+                files: ['**/*.less'],
+                tasks: [
+                    'less'
+                ],
+                options: {
+                    spawn: false
+                },
+            },
+        },
+        'shell': {
+            start: {
+                command: 'node test.js',
+                options: {
+                    async: true
+                }
+            },
+            options: {
+                stdout: true,
+                stderr: true,
+                failOnError: true
             }
         }
     });
@@ -95,6 +121,8 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'build'
+        'build',
+        'shell:start',
+        'watch',
     ]);
 };
