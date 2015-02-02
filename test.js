@@ -44,7 +44,9 @@ app.get("/", function(req, res, next) {
 
 Q.nfcall(app.listen.bind(app), PORT)
 .then(function(server) {
-	console.log('Server listening on port', PORT)
+	console.log("");
+	console.log("Preview Server listening on port", PORT);
+	console.log("")
 }, function(err) {
 	console.log(err.stack || err);
 });
