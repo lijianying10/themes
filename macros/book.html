@@ -1,5 +1,5 @@
 {% macro metatags(_book) %}
-    <title>{{ book.title }}</title>
+    <title>{{ _book.title }}</title>
     <meta name="description" content="{{ _book.description }}">
     <meta name="author" content="{{ _book.author.name }}">
     <meta itemprop="name" content="{{ _book.title }}" />
