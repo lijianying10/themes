@@ -4,6 +4,16 @@ This repository contains all the themes for book landing pages on [gitbook.com](
 
 If you want to publish your themes to be usable by all gitbook.com users, feel free to do a Pull-Request. Documentation on templating can be found in the [GitBook's documentation](http://help.gitbook.com/format/templating.html).
 
+### How to test themes ?
+
+```
+# Install dependencies
+$ npm install
+
+# Run the test server
+$ gulp test
+```
+
 ## How to test and publish a theme?
 
 1. Fork this repository
