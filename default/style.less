@@ -9,15 +9,16 @@
     h1 {
         font-size: 42px;
         margin: 0px;
+        margin-bottom: 6px;
 
-        @media (max-width: 550px) {
+        @media (max-width: @gb-container-xs-max) {
             text-align: center;
         }
     }
 
     p {
         &.author {
-            @media (max-width: 550px) {
+            @media (max-width: @gb-container-xs-max) {
                 text-align: center;
                 margin-top: 15px;
             }
@@ -39,7 +40,7 @@
         display: block;
         border: 1px solid @gb-palette-gray-outline;
 
-        @media (max-width: 550px) {
+        @media (max-width: @gb-container-xs-max) {
             width: 240px;
             margin-bottom: 30px;
         }
