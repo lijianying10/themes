@@ -32,7 +32,9 @@ gulp.task('themes-copy', function() {
     return gulp.src([
         '**/*',
         '!**/*.less',
-        '!node_modules/**/*'
+        '!node_modules/**/*',
+        '!*.js',
+        '!*.md'
     ]).pipe(gulp.dest(buildOut));
 });
 
@@ -46,7 +48,7 @@ gulp.task('themes-css', function() {
 
 // Build themes
 gulp.task('themes-build', function(cb) {
-    return runSequence('themes-clean', 'themes-copy', 'themes-css', cb);
+    return runSequence('themes-clean', 'themes-copy', ['themes-css', 'themes-packagejson'], cb);
 });
 
 // Clean themes output
@@ -54,6 +56,26 @@ gulp.task('themes-clean', function(cb) {
     del([
         path.join(buildOut, '**')
     ], cb);
+});
+
+// Write release-ready package.json
+gulp.task('themes-packagejson', function(cb) {
+    var _pkg = _.omit(pkg,
+        'devDependencies',
+        'scripts'
+    );
+
+    fs.writeFile(path.resolve(buildOut, 'package.json'), JSON.stringify(_pkg, null, 4), cb);
+});
+
+// Release a new version
+gulp.task('release', ['themes-build'], function(cb) {
+    exec('npm publish', {
+        cwd: buildOut
+    }, function(err) {
+        if (err) return cb(err);
+        cb();
+    });
 });
 
 // Compile less for themes
