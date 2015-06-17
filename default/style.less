@@ -1,54 +1,14 @@
-@readme-padding: 25px 0px;
+@import "../node_modules/gitbook-styleguide/less/main.less";
+@gb-assets-path: "http://styleguide.gitbook.com/assets";
 
-* {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-body {
-    font-size: 1.5em;
-    line-height: 1.6;
-    font-weight: 400;
-    font-family: 'Open Sans', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #222;
-}
 
 .intro {
-    background: #f5f5f5;
     padding: 40px 0px;
+    background: @gb-palette-gray;
 
-    @media (max-width: 550px) {
-        padding: 20px 0px;
-    }
-}
-
-.body {
-    padding: 30px 0px;
-}
-
-hr.transparent {
-    border-color: transparent;
-}
-
-.cover img {
-    width: 100%;
-    max-width: 400px;
-    margin: 0px auto;
-    display: block;
-    border: 1px solid #dae0e5;
-
-    @media (max-width: 550px) {
-        margin-bottom: 30px;
-    }
-}
-
-.infos {
     h1 {
-        font-weight: bold;
-        font-size: 7rem;
-        letter-spacing: -2px;
+        font-size: 42px;
         margin: 0px;
-        color: #242526;
 
         @media (max-width: 550px) {
             text-align: center;
@@ -64,58 +24,55 @@ hr.transparent {
         }
 
         &.description {
-            font-size: 2.4rem;
+            font-size: 24px;
             font-weight: 300;
             padding: 25px 0px;
             margin: 0px;
         }
     }
-}
 
-.actions {
-    margin: 0px 0px 30px;
+
+    .cover img {
+        width: 100%;
+        max-width: 400px;
+        margin: 0px auto;
+        display: block;
+        border: 1px solid @gb-palette-gray-outline;
+
+        @media (max-width: 550px) {
+            width: 240px;
+            margin-bottom: 30px;
+        }
+    }
+
+    .actions {
+        margin: 0px 0px 30px;
+
+        p {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    }
 }
 
 .sharing {
     text-align: center;
+    background: darken(@gb-palette-gray, 2%);
+    padding: 30px 0px;
 
     .share-box {
         display: inline-block;
-        margin: 10px 5px;
+        margin: 0px 5px;
     }
 }
 
-.mailing {
-    text-align: center;
-    margin: 0px auto;
+.body {
+    padding: 30px 0px;
 
-    input {
-        height: 38px;
-    }
+    .readme {
+        font-size: 16px;
 
-    p {
-        color: rgba(0,0,0,0.3);
-        font-weight: 300;
-    }
-}
-
-.reviews {
-    .review {
-        margin: 15px;
-    }
-}
-
-.readme {
-    font-size: 1.7rem;
-
-    section {
-        margin: @readme-padding;
-
-        img {
-            max-width: 100%;
-        }
-
-        &:first-child > h1:first-child {
+        section:first-child > h1:first-child {
             display: none;
         }
     }
@@ -127,6 +84,7 @@ hr.transparent {
     border-top: 1px solid rgba(0,0,0,0.05);
     text-align: center;
     color: #ddd;
+    font-size: 16px;
 
     a {
         color: rgba(0,0,0,0.3);
