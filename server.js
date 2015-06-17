@@ -5,9 +5,12 @@ var request = require("request");
 var fs = require("fs");
 var path = require("path");
 
+// Configuration
 var HOST = process.env.GITBOOK_HOST || "https://www.gitbook.com";
 var PORT = process.env.PORT || 3000;
 var THEMES_DIR = path.resolve(__dirname, "./");
+
+var app = express();
 
 function previewHtml(book, html, assets) {
     var uri = HOST+"/preview/book/"+book;
@@ -20,11 +23,10 @@ function previewHtml(book, html, assets) {
     .get(1);
 };
 
-var app = express();
-
+// Expose assets of themes
 app.use('/assets', express.static(__dirname + '/build'));
 
-
+// Preview a book with a specific theme
 app.get("/:author/:book/:theme", function(req, res, next) {
     var bookId = [req.params.author, req.params.book].join("/");
 
@@ -37,15 +39,16 @@ app.get("/:author/:book/:theme", function(req, res, next) {
     }, next);
 });
 
+// Default preview
 app.get("/", function(req, res, next) {
     res.redirect("/samypesse/how-to-create-an-operating-system/default")
 });
 
-
+// Strt server
 Q.nfcall(app.listen.bind(app), PORT)
 .then(function(server) {
     console.log("");
-    console.log("Preview Server listening on port", PORT);
+    console.log("GitBook Themes Preview Server listening on port", PORT);
     console.log("")
 }, function(err) {
     console.log(err.stack || err);

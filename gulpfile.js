@@ -18,6 +18,15 @@ var buildOut = path.resolve(__dirname, 'build');
 var filterLess = ['**/*.less', '!node_modules/**/*.less'];
 var filterHtml = ['**/*.html', '!node_modules/**/*.html'];
 
+// Test server
+var testServer;
+process.on('exit', function(code) {
+    if (testServer) testServer.kill(code);
+});
+process.on('uncaughtException', function() {
+    if (testServer) testServer.kill(1);
+});
+
 // Copy themes to output
 gulp.task('themes-copy', function() {
     return gulp.src([
@@ -48,11 +57,13 @@ gulp.task('themes-clean', function(cb) {
 });
 
 // Compile less for themes
-gulp.task('test', ['themes-build'], function() {
-    exec('node server.js', function(err) {
+gulp.task('test', ['themes-build'], function(cb) {
+    testServer = exec('node server.js', function(err) {
         if (err) return cb(err);
         cb();
     });
+    testServer.stdout.pipe(process.stdout);
+    testServer.stderr.pipe(process.stderr);
 
     gulp.watch(filterLess, ['themes-css']);
     gulp.watch(filterHtml, ['themes-copy']);
