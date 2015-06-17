@@ -5,28 +5,30 @@
         {{ mcBook.metatags(book) }}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="icon" href="https://www.gitbook.com/assets/images/logo/favicon.ico">
-        <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{{ "style.css"|assetUrl }}">
-        <style type="text/css">
-            {% block css %}
-            /* Custom CSS */
-            {% endblock %}
-        </style>
-        {% block head %}{% endblock %}
     </head>
     <body>
     {% block body %}
         <!-- Header with title -->
         <header>
             <div class="container">
-                <h1>{{ book.title }}</h1>
+                <div class="row">
+                    <div class="col-md-9 col-sm-8">
+                        <h1>{{ book.title }}</h1>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <a href="{{ book.author.urls.profile }}">
+                            By {{ book.author.name }}
+                        </a>
+                    </div>
+                </div>
             </div>
         </header>
 
         <!-- Details: cover, readme -->
         <div class="container">
             <div class="row">
-                <div class="columns four">
+                <div class="col-sm-3 hidden-xs">
                     <!-- Cover -->
                     <div class="cover">
                         <img src="{{ book.cover.large }}" />
@@ -34,17 +36,17 @@
 
                     <!-- Actions -->
                     <p>
-                        <a href="{{ book.urls.read }}" class="button u-full-width">
+                        <a href="{{ book.urls.read }}" class="btn btn-default btn-lg btn-block btn-info btn-fill">
                         {% if book.price > 0 and not book.permissions.read %}Buy Now for ${{ book.price.toFixed(2) }}{% else %}Read Online{% endif %}
                         </a>
                     </p>
                     {% if book.price > 0 and not book.permissions.read %}
-                    <p>By buying this book, You get unlimited access to the online version (with any browser), and ebook versions (ePub, Mobi and PDF).</p>
+
                     {% else %}
                     <p>You can also download this book as: <a href="{{ book.urls.download.epub }}" rel="nofollow">ePUB</a>, <a href="{{ book.urls.download.mobi }}" rel="nofollow">MOBI</a> or <a href="{{ book.urls.download.pdf }}" rel="nofollow">PDF</a>.</p>
                     {% endif %}
                 </div>
-                <div class="columns eight">
+                <div class="col-sm-9">
                     <div class="details">
                         <!-- Intro -->
                         <div class="readme">
@@ -52,7 +54,7 @@
                         </div>
 
                         <hr>
-                        <p>Written by {{ book.author.name }}{% for user in book.collaborators %}{% if loop.last %} and{% elif not loop.first %},{% endif %} {{ user.name }}{% endfor %}. Published as an ebook using <a href="https://www.gitbook.com">GitBook</a>.</p>
+                        <p>Written by <a href="{{ book.author.urls.profile }}">{{ book.author.name }}</a>{% for user in book.collaborators %}{% if loop.last %} and{% else %},{% endif %} <a href="{{ user.urls.profile }}">{{ user.name }}</a>{% endfor %}. Published as an ebook using <a href="https://www.gitbook.com">GitBook</a>.</p>
                     </div>
                 </div>
             </div>

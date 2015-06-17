@@ -5,7 +5,7 @@
         "author": {
             "name": "Samy Pessé",
             "email": "samypesse@gmail.com",
-            "url": "http://samypesse.fr"
+            "url": "https://github.com/SamyPesse"
         }
     },
     {
@@ -14,7 +14,7 @@
         "author": {
             "name": "Samy Pessé",
             "email": "samypesse@gmail.com",
-            "url": "http://samypesse.fr"
+            "url": "https://github.com/SamyPesse"
         }
     },
     {
@@ -23,7 +23,7 @@
         "author": {
             "name": "Samy Pessé",
             "email": "samypesse@gmail.com",
-            "url": "http://samypesse.fr"
+            "url": "https://github.com/SamyPesse"
         }
     },
     {
@@ -32,7 +32,7 @@
         "author": {
             "name": "Samy Pessé",
             "email": "samypesse@gmail.com",
-            "url": "http://samypesse.fr"
+            "url": "https://github.com/SamyPesse"
         }
     },
     {
@@ -41,7 +41,16 @@
         "author": {
             "name": "Samy Pessé",
             "email": "samypesse@gmail.com",
-            "url": "http://samypesse.fr"
+            "url": "https://github.com/SamyPesse"
+        }
+    },
+    {
+        "id": "readme",
+        "title": "Readme",
+        "author": {
+            "name": "Samy Pessé",
+            "email": "samypesse@gmail.com",
+            "url": "https://github.com/SamyPesse"
         }
     }
 ]

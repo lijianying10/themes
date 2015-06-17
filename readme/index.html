@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        {{ mcBook.metatags(book) }}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="icon" href="https://www.gitbook.com/assets/images/logo/favicon.ico">
+        <link rel="stylesheet" href="{{ "style.css"|assetUrl }}">
+    </head>
+    <body>
+    {% block body %}
+        <div class="page">
+            <div class="page-inner gb-markdown">
+                <div class="readme">
+                {{ mcBook.readme(book) }}
+                </div>
+                <div class="continue">
+                    <p><a href="{{ book.urls.read }}" class="btn btn-block btn-default btn-lg">{% if book.price > 0 and not book.permissions.read %}Read for ${{ book.price.toFixed(2) }}{% else %}Read Online{% endif %}</a></p>
+                    {% if book.price == 0 or book.permissions.read %}
+                    <div class="container container-fluid">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <a href="{{ book.urls.download.pdf }}" class="btn btn-default btn-block" rel="nofollow">
+                                    <i class="octicon octicon-file-pdf"></i> PDF
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="{{ book.urls.download.epub }}" class="btn btn-default btn-block" rel="nofollow">
+                                    <i class="octicon octicon-file-zip"></i> ePUB
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="{{ book.urls.download.mobi }}" class="btn btn-default btn-block" rel="nofollow">
+                                    <i class="octicon octicon-file-zip"></i> MOBI
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    </body>
+</html>

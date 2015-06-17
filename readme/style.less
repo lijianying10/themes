@@ -1,0 +1,39 @@
+@import "../node_modules/gitbook-styleguide/less/main.less";
+@gb-assets-path: "http://styleguide.gitbook.com/assets";
+
+body, html {
+    background: @gb-palette-gray;
+}
+
+.page {
+    margin: 0px auto;
+    padding: 30px 15px;
+    max-width: 845px;
+    width: 100%;
+
+    @media (max-width: @gb-container-xs-max) {
+        padding: 15px;
+    }
+
+    .page-inner {
+        background: #fff;
+        .box-shadow(~"0 0 5px rgba(0, 0, 0, 0.2)");
+        border: 1px solid @gb-palette-gray-outline;
+
+        .readme{
+            padding: 35px 70px;
+            padding-bottom: 15px;
+
+            @media (max-width: @gb-container-xs-max) {
+                padding: 15px 30px;
+                padding-bottom: 15px;
+            }
+        }
+
+        .continue {
+            border-top: 1px solid @gb-palette-gray-outline;
+            padding: 15px;
+            background: darken(@gb-palette-gray, 2%);
+        }
+    }
+}
