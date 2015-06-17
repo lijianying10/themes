@@ -43,6 +43,9 @@ app.get("/:author/:book/:theme", function(req, res, next) {
 app.get("/", function(req, res, next) {
     res.redirect("/samypesse/how-to-create-an-operating-system/default")
 });
+app.get("/:theme", function(req, res, next) {
+    res.redirect("/samypesse/how-to-create-an-operating-system/"+req.params.theme);
+});
 
 // Strt server
 Q.nfcall(app.listen.bind(app), PORT)
